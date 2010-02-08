@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'vendor/sinatra/lib/sinatra'
+require 'vendor/mem_info/lib/mem_info'
 require 'erb'
-require 'mem_info'
 
 get '/hi' do
   @foo = MemInfo.new.memused

@@ -1,0 +1,26 @@
+ul {
+  border-top: 1px solid black;
+  list-style: none;
+/*  float: left;*/
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #efefef;
+}
+
+li.procs {
+  display: none;
+}
+
+pre.procs {
+  overflow: scroll;
+  background-color: #000;
+  color: #fff;
+  margin-left: 20px;
+  padding: 10px;
+  width: 800px;
+  height: 300px;
+}

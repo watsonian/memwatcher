@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('li.timestamp').click(function(){
-    $(this).next().slideToggle();
+  $('ul').click(function(){
+    $(this).find('li.procs').slideToggle();
   });
 });

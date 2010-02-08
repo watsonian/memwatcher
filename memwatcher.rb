@@ -12,9 +12,13 @@ get '/processes' do
   @file_list = Dir.glob("log/procs/*.snapshot.out").sort.reverse
   @files = []
   @file_list.each do |file|
-    @files << { :name => date_from_filename(file), :data => File.open(file) { |f| f.read } }
+    @files << hash_from_filename(file)
   end
   erb :processes
+end
+
+def megabytes(kilobytes)
+  (kilobytes.to_f / 1024.0).floor
 end
 
 def readable_date(date, format="%Y/%h/%d %I:%M:%S %p")
@@ -23,5 +27,22 @@ def readable_date(date, format="%Y/%h/%d %I:%M:%S %p")
 end
 
 def date_from_filename(filename)
-  File.basename(filename).split(".").first
+  File.basename(filename).split("-").first
+end
+
+def oldmem_from_filename(filename)
+  File.basename(filename).split("-")[1]
+end
+
+def newmem_from_filename(filename)
+  File.basename(filename).split("-")[2].split(".").first
+end
+
+def hash_from_filename(filename)
+  {
+    :name => date_from_filename(filename),
+    :oldmem => oldmem_from_filename(filename),
+    :newmem => newmem_from_filename(filename),
+    :data => File.open(filename) { |f| f.read }
+  }
 end

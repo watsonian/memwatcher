@@ -17,9 +17,13 @@
         <li class="timestamp">
           <%= readable_date(file[:name]) %>
         </li>
+        <li class="memchange">
+          memory usage changed from <strong><%= megabytes(file[:oldmem]) %>MB</strong> to <strong><%= megabytes(file[:newmem]) %>MB</strong>
+        </li>
         <li class="procs">
           <pre class="procs"><%= file[:data] %></pre>
         </li>
+        <li class="clear"></li>
       </ul>
     <% end %>
   </div>

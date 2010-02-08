@@ -1,3 +1,13 @@
+body {
+  margin: 0px;
+  font-family: "Lucida Grande";
+}
+
+h1 {
+  margin-left: 15px;
+  font-size: 2em;
+}
+
 ul {
   border-top: 1px solid black;
   list-style: none;
@@ -11,11 +21,31 @@ ul {
   background-color: #efefef;
 }
 
+.clear {
+  clear: both;
+}
+
+li {
+  font-size: .8em;
+}
+
+li.timestamp {
+  float: left;
+  font-weight: bold;
+}
+
+li.memchange {
+  float: left;
+  padding-left: 10px;
+}
+
 li.procs {
   display: none;
+  float: left;
 }
 
 pre.procs {
+  border: 1px solid #666;
   overflow: scroll;
   background-color: #000;
   color: #fff;

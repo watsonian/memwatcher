@@ -1,6 +1,6 @@
 body {
   margin: 0px;
-  font-family: "Lucida Grande";
+  font-family: "Helvetica";
 }
 
 h1 {
@@ -8,43 +8,104 @@ h1 {
   font-size: 2em;
 }
 
-ul {
+div.form {
+  position: absolute;
+  top: 15px;
+  left: 300px;
+}
+
+div.form label {
+  font-size: .9em;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+div.form input {
+  width: 55px;
+}
+
+div.form li {
+  padding-left: 5px;
+}
+
+div.form ul {
+  list-style: none;
+}
+
+div.form #memory_threshold_result {
+  font-size: .9em;
+  font-weight: bold;
+  padding: 3px;
+}
+
+div.form #memory_threshold_result.success {
+  color: green;
+}
+
+div.form #memory_threshold_result.failed {
+  color: red;
+}
+
+div.processes ul {
   border-top: 1px solid black;
   list-style: none;
-/*  float: left;*/
   margin-top: 0px;
   margin-bottom: 0px;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: #efefef;
+  background-color: #e1e8f4;
+}
+
+div.processes ul:hover {
+  background-color: #f6f8d5;
+}
+
+div.processes .even {
+  background-color: #e1e8f4;
+}
+
+div.processes .odd {
+  background-color: #fff;
 }
 
 .clear {
   clear: both;
 }
 
-li {
+.hidden {
+  display: none;
+}
+
+ul.form {
+  float: left;
+}
+
+.form li {
+  float: left;
+}
+
+div.processes li {
   font-size: .8em;
 }
 
-li.timestamp {
+div.processes li.timestamp {
   float: left;
   font-weight: bold;
 }
 
-li.memchange {
+div.processes li.memchange {
   float: left;
   padding-left: 10px;
 }
 
-li.procs {
+div.processes li.procs {
   display: none;
   float: left;
 }
 
-pre.procs {
+div.processes pre.procs {
   border: 1px solid #666;
   overflow: scroll;
   background-color: #000;

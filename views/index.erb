@@ -3,17 +3,40 @@
 
 <html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Hello!</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css" />
-	<script type="text/javascript" src="js/jquery-1.4.1.js"></script> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>MemWatcher</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script> 
 </head>
 <body>
-  <div class="row">
+  <h1>MemWatcher</h1>
+  <div class="form">
     <ul>
-      <li>Memory Used:</li>
-      <li><%= @mem_used %></li>
+      <form id="max_memused_form" method="post" action="/max_memused">
+        <li><label for="memory_threshold">Memory Threshold</label><input id="memory_threshold" name="memory_threshold" value="<%= @memory_threshold %>" /></li>
+        <li class="hidden"><input type="hidden" name="_method" value="put" /></li>
+        <li><button type="submit">Update</button></li>
+        <li id="memory_threshold_result"></li>
+      </form>
+      <li class="clear"></li>
     </ul>
+  </div>
+  <div class="processes">
+    <% @files.each do |file| %>
+      <ul class="<%= cycle %>">
+        <li class="timestamp">
+          <%= readable_date(file[:name]) %>
+        </li>
+        <li class="memchange">
+          memory usage changed from <strong><%= megabytes(file[:oldmem]) %>MB</strong> to <strong><%= megabytes(file[:newmem]) %>MB</strong>
+        </li>
+        <li class="procs">
+          <pre class="procs"><%= file[:data] %></pre>
+        </li>
+        <li class="clear"></li>
+      </ul>
+    <% end %>
   </div>
 </body>
 </html>

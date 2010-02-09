@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>memcheck</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+  <ul>
+    <li>Current Mem Usage: <strong><%= megabytes(@meminfo.memused) %>MB</strong></li>
+    <li>Highest Mem Usage: <strong><%= megabytes(@max_memused) %>MB</strong></li>
+  </ul>
+</body>
+</html>

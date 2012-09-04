@@ -96,7 +96,7 @@ div.processes li.timestamp {
 }
 
 div.processes li.memchange {
-  float: left;
+  float: none;
   padding-left: 10px;
 }
 

@@ -5,6 +5,7 @@ require 'mem_info'
 require 'erb'
 
 class MemWatcher < Sinatra::Base
+  set :views, File.join(File.dirname(settings.root), "/views")
 
   @@memory_threshold = 50000
   @@max_memused = @@memory_threshold

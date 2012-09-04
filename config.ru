@@ -3,5 +3,5 @@ require 'bundler'
 
 Bundler.require
 
-require './mem_watcher'
+require './lib/mem_watcher'
 run MemWatcher

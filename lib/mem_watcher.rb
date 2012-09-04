@@ -8,7 +8,7 @@ require 'erb'
 class MemWatcher < Sinatra::Base
   set :views, File.join(File.dirname(settings.root), "/views")
   set :public_folder, File.join(File.dirname(settings.root), "/public")
-  set :log_dir, ENV['MEMWATCHER_LOG_DIR'] || File.join(File.dirname(settings.root), "/log/procs")
+  set :log_dir, (ENV['MEMWATCHER_LOG_DIR'] || File.join(File.dirname(settings.root), "/log/procs"))
 
   @@memory_threshold = (ENV['MEMWATCHER_MEMORY_THRESHOLD'] || 50000).to_i
   @@max_memused = @@memory_threshold

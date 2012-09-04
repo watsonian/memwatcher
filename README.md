@@ -21,6 +21,18 @@ The following configuration options are available via environment variables:
 * `MEMWATCHER_LOGS_TO_KEEP` - The number of log files to keep. Defaults to 25.
 * `MEMWATCHER_LOG_DIR` - The location to store the logs. Defaults to `log/procs`.
 
+## Usage
+
+First, deploy this application like you would any other Sinatra application.
+Generally, speaking just make sure you pass in `RACK_ENV=production` to `rackup`
+when starting it up and you should be good to go. Make sure you `bundle install`
+first.
+
+Once the application is running, you'll want to setup a cronjob that hits the
+`/memcheck` URL with whatever frequency you like. From there you can browse to
+the root address to adjust the memory threshold or view any process listings
+that have been taken.
+
 ## Copyright
 
 Copyright (c) 2012 Joel Watson. See LICENSE for details.

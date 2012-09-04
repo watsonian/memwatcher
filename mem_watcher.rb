@@ -6,8 +6,6 @@ require 'erb'
 
 class MemWatcher < Sinatra::Base
 
-  puts 
-
   @@memory_threshold = 50000
   @@max_memused = @@memory_threshold
   @@num_checks = 0

@@ -73,7 +73,7 @@ class MemWatcher < Sinatra::Base
 
     def save_process_list!(cur_meminfo)
       FileUtils.mkdir_p("./log/procs")
-      system("ps auxr > log/procs/`date \"+%Y%m%d_%H%M%S-#{@@max_memused}-#{cur_meminfo.memused}\"`.snapshot.out")
+      system("ps auxf > log/procs/`date \"+%Y%m%d_%H%M%S-#{@@max_memused}-#{cur_meminfo.memused}\"`.snapshot.out")
     end
 
     def check_cleanup!

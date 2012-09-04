@@ -8,12 +8,13 @@ require 'erb'
 class MemWatcher < Sinatra::Base
   set :views, File.join(File.dirname(settings.root), "/views")
   set :public_folder, File.join(File.dirname(settings.root), "/public")
+  set :log_dir, ENV['MEMWATCHER_LOG_DIR'] || File.join(File.dirname(settings.root), "/log/procs")
 
-  @@memory_threshold = 50000
+  @@memory_threshold = (ENV['MEMWATCHER_MEMORY_THRESHOLD'] || 50000).to_i
   @@max_memused = @@memory_threshold
   @@num_checks = 0
-  @@max_checks = 6
-  @@logs_to_keep = 25
+  @@max_checks = (ENV['MEMWATCHER_MAX_CHECKS'] || 6).to_i
+  @@logs_to_keep = (ENV['MEMWATCHER_LOGS_TO_KEEP'] || 25).to_i
 
   #####
   # Actions
@@ -72,7 +73,7 @@ class MemWatcher < Sinatra::Base
     end
 
     def save_process_list!(cur_meminfo)
-      FileUtils.mkdir_p("./log/procs")
+      FileUtils.mkdir_p(settings.log_dir)
       system("ps auxf > log/procs/`date \"+%Y%m%d_%H%M%S-#{@@max_memused}-#{cur_meminfo.memused}\"`.snapshot.out")
     end
 

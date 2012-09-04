@@ -86,7 +86,7 @@ class MemWatcher < Sinatra::Base
     end
     
     def get_log_list
-      Dir.glob(File.join(settings.log_dir, "*.snapshot.out").sort.reverse
+      Dir.glob(File.join(settings.log_dir, "*.snapshot.out")).sort.reverse
     end
     
     def cleanup_logs!

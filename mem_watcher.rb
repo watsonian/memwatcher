@@ -12,7 +12,6 @@ class MemWatcher < Sinatra::Base
   @@max_checks = 6
   @@logs_to_keep = 25
 
-
   #####
   # Actions
 
@@ -27,17 +26,22 @@ class MemWatcher < Sinatra::Base
   end
 
   get '/memcheck' do
-    @meminfo = MemInfo.new
-    @max_memused = @@max_memused
-    if mem_increased?(@meminfo)
-      save_process_list!(@meminfo)
-      @max_memused = update_max_memused!(@meminfo)
+    begin
+      @meminfo = MemInfo.new
+      @max_memused = @@max_memused
+      if mem_increased?(@meminfo)
+        save_process_list!(@meminfo)
+        @max_memused = update_max_memused!(@meminfo)
+      end
+
+      check_cleanup!
+      cleanup_logs!
+
+      erb :memcheck
+    rescue MemInfo::NoProcData => e
+      status 500
+      e.message
     end
-    
-    check_cleanup!
-    cleanup_logs!
-    
-    erb :memcheck
   end
 
   put '/max_memused' do

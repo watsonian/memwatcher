@@ -1,7 +1,5 @@
 # MemWatcher
 
-![](https://img.skitch.com/20120904-ei2851g3ij73e7mqp7m95q8f8s.jpg)
-
 This is a small Sinatra app that's designed to run on a server that you want
 to monitor memory usage on. You configure a memory threshold and every time
 the `/memcheck` page is hit the memory usage on the server is checked. If it
@@ -9,6 +7,8 @@ exceeds the specified amount, it records the running processes and the memory
 usage at that time. Subsequent memory checks won't be recorded unless they
 exceed the last highest memory usage seen. The max seen memory is reset after
 a configurable number of times.
+
+![](https://img.skitch.com/20120904-ei2851g3ij73e7mqp7m95q8f8s.jpg)
 
 ## Configuration
 
